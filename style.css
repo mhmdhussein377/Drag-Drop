@@ -1,0 +1,95 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.draggable {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 400px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 2px dashed #cccccc;
+    border-radius: 5px;
+}
+
+.item {
+    padding: 10px;
+    margin: 5px;
+    background-color: #f1f1f1;
+    cursor: move;
+}
+
+.droppable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px dashed #cccccc;
+    border-radius: 5px;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.reset-button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.reset-button:hover {
+    background-color: #45a049;
+}
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .draggable {
+        max-width: 100%;
+    }
+}
+
+button {
+    background-color: yellowgreen;
+    padding: 10px 16px;
+    outline: none;
+    border: none;
+    color: black;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
