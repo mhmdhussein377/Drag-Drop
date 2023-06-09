@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        
+        .item {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f1f1f1;
+            cursor: move;
+        }
+        
+        .droppable {
+            border: 2px dashed #ccc;
+            padding: 10px;
+            min-height: 100px;
+        }
+        
+        .success-message {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <body>
+    <div class="container">
+        <div class="draggable">
+            <div class="item" draggable="true">Item 1</div>
+            <div class="item" draggable="true">Item 2</div>
+            <div class="item" draggable="true">Item 3</div>
+            <div class="item" draggable="true">Item 4</div>
+        </div>
+        <div class="droppable">
+            Drop items here
+        </div>
+    </div>
+    <button onclick="reset()">Reset</button>
+    <script>
+        var draggableContainer = document.querySelector('.draggable');
+        var droppableContainer = document.querySelector('.droppable');
+        var successMessage = document.createElement('div');
+        successMessage.classList.add('success-message');
+        
+        // Event listener for dragging start
+        draggableContainer.addEventListener('dragstart', function(event) {
+            draggedItem = event.target;
+            event.dataTransfer.effectAllowed = 'move';
+        });
+        
+        // Event listener for dragging over the droppable container
+        droppableContainer.addEventListener('dragover', function(event) {
+            event.preventDefault();
+        });
+        
+        // Event listener for dropping into the droppable container
+        droppableContainer.addEventListener('drop', function(event) {
+            event.preventDefault();
+            
+            // Append the dragged item to the droppable container
+            droppableContainer.appendChild(draggedItem);
+            
+            // Show success message
+            successMessage.textContent = 'Item dropped successfully!';
+            droppableContainer.appendChild(successMessage);
+        });
+        
+        // Function to reset the containers to their original state
+        function reset() {
+            draggableContainer.innerHTML = `
+                <div class="item" draggable="true">Item 1</div>
+                <div class="item" draggable="true">Item 2</div>
+                <div class="item" draggable="true">Item 3</div>
+                <div class="item" draggable="true">Item 4</div>
+            `;
+            droppableContainer.innerHTML = 'Drop items here';
+        }
+    </script>
+</body>
+</html>
